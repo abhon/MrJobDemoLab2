@@ -2,11 +2,10 @@
 #! /usr/bin/env python
 
 from mrjob.job import MRJob
-import string
 
 class MRCommonFriends(MRJob):
     """
-    A class to count word frequency in an input file.
+    A class to find common friends between two friends
     """
 
     def mapper(self, _, line):
@@ -20,9 +19,11 @@ class MRCommonFriends(MRJob):
                 A value parsed from input and by default it is None because the input is just raw text.
                 We do not need to use this parameter.
             line: str
-                each single line a file with newline stripped
+                each single line from csv with the individual, followed by all of their friends
+                (e.g.: A,C D G Z)
             Yields:
-                (key, value) pairs of the form where key is word and value is 1
+                (key, value) pairs of the form where key is the friend combination and value is the 
+                all the friends of the individual.
         """
         my_network = line.split(sep = ',')
         my_friends = my_network[1].split(sep = ' ')
@@ -36,19 +37,18 @@ class MRCommonFriends(MRJob):
         The reducer takes (key, list(values)) as input, and returns a single
         (key, result) pair. This is specific to `mrjob`, and isn't usually
         required by Hadoop.
-        This function just runs a sum across the list of the values (which are
-        all 1), returning the word as the key and the number of occurrences
-        as the value.
+        This function changes both friend groups to sets and takes the interestion
+        of the two groups
         
         Parameters:
             friend_combination: tuple
                 tuple consisting of the sorted order of a friend combination
-            counts: list
+            friends: list
                 list containing sets of the two friend groups
             Yields:
                 friend_combination
                     tuple consisting of the sorted order of a friend combination
-                common_friends: set
+                common_friends: interesection of the two friend groups
                     
         """
         friend_group = [set(i) for i in list(friends)]
