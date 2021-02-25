@@ -53,7 +53,7 @@ class MRCommonFriends(MRJob):
         """
         friend_group = [set(i) for i in list(friends)]
 
-        common_friends = friend_group[0].intersection(friend_group[1])
+        common_friends = list(friend_group[0].intersection(friend_group[1]))
         
         yield (friend_combination, common_friends)
 
