@@ -30,4 +30,4 @@ Once we have all the keys, the reducer takes all values associated with key, and
 
 (A,B)     [D]
 
-Looking above at our original table, individuals A and B only have friend D in common, so this is correct. In order to run the job locally, go to the `\src` file and run `python MrJob_CommonFriends.py ../Friends.csv`
+Looking above at our original table, individuals A and B only have friend D in common, so this is correct. In order to run the job locally, go to the `/src` file and run `python MrJob_CommonFriends.py ../Friends.csv`
