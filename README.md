@@ -26,7 +26,7 @@ To find common friends, our **mapper** should produce **keys** that are combinat
 | (A,E) | [A] |
 |----------|------|
 
-Once we have all the keys, the reducer takes all values associated with key, and we then take the **interesection** between the two sets. For example, let's take key (A,B). This key has values [[B, D, E],[A ,D]]. Taking the intersection of these two sets results in the common friends between A and B. THe following Table is the results of running our map-reduce job:
+Once we have all the keys, the reducer takes all values associated with key, and we then take the **interesection** between the two sets. For example, let's take key (A,B). This key has values [[B, D, E],[A ,D]]. Taking the intersection of these two sets results in the common friends between A and B. The following Table is the results of running our map-reduce job:
 
 |Resulting Key|Common Friends|
 |----------|------|
